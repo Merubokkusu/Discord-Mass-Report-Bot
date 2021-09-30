@@ -7,7 +7,7 @@ from colorama import Fore, Style
 from threading import Thread
 from sys import stdout
 from requests import Session
-from time import strftime, gmtime
+from time import strftime, gmtime, sleep
 
 sent = 0
 session = Session()
@@ -38,7 +38,7 @@ print(f"""
                                   GitHub:
                                   https://github.com/social404                                                                                                 
 {b+Fore.RED} x > {Fore.RESET}Options
-{b+Fore.RED} {1} > {Fore.RESET}illegal Conent {b+Fore.GREEN}::{Fore.RESET} 1
+{b+Fore.RED} {1} > {Fore.RESET}illegal Content {b+Fore.GREEN}::{Fore.RESET} 1
 {b+Fore.RED} {2} > {Fore.RESET}Harrassment {b+Fore.GREEN}::{Fore.RESET} 2
 {b+Fore.RED} {3} > {Fore.RESET}Spam or Phishing Links {b+Fore.GREEN}::{Fore.RESET} 3
 {b+Fore.RED} {4} > {Fore.RESET}Self harm {b+Fore.GREEN}::{Fore.RESET} 4
@@ -53,6 +53,8 @@ if r.status_code == 200:
 else:
         print(f"{b+Fore.RED} > Invalid Token")
         input()
+reportAmount = input(f"{b+Fore.BLUE} > How many reports would you like to send{Fore.RESET}: ")
+sleepAmount = input(f"{b+Fore.BLUE} > How many seconds in-between reports would you like to wait{Fore.RESET}: ")
 guild_id1 = input(f"{b+Fore.BLUE} > Server ID{Fore.RESET}: ")
 channel_id1 = input(f"{b+Fore.BLUE} > Channel ID{Fore.RESET}: ")
 message_id1 = input(f"{b+Fore.BLUE} > Message ID{Fore.RESET}: ")
@@ -75,7 +77,7 @@ def Main():
   }
 
   while True:
-    r = requests.post('https://discord.com/api/v6/report', headers=headers, json=payload)
+    r = requests.post('https://discord.com/api/v8/report', headers=headers, json=payload)
     if r.status_code == 201:
       print(f"{Fore.GREEN} > Sent Report {b+Fore.BLUE}::{Fore.GREEN} ID {message_id1}")
       sent += 1
@@ -89,5 +91,6 @@ def Main():
 
 
 print()
-for i in range(500, 1000):
+for i in range(int(reportAmount)):
     Thread(target=Main).start()
+    sleep(int(sleepAmount))
