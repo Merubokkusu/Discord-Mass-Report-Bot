@@ -15,11 +15,13 @@ This tool was strictly developed to demonstrate how straightforward it can be to
 
 1. Run main.py.
 2. Paste the Discord Token
-3. Discord server's ID the message was posted in.
-4. Paste the channel ID.
-5. Paste the message ID.
-6. Select a reasonable reason to the report.
-7. All set!
+3. Enter the amount of reports you'd like sent
+4. Enter the amount of seconds for waiting inbetween reports. (2 seconds works flawlessly)
+5. Discord server's ID the message was posted in.
+6. Paste the channel ID.
+7. Paste the message ID.
+8. Select a reasonable reason to the report.
+9. All set!
 
 ## Host On Replit
 ### [Click Here](https://replit.com/@Social404/Mass-Report-Bot)
